@@ -33,6 +33,15 @@ public class CustomerController {
     }
 
     /**
+     * 添加
+     */
+    @Action("post:/customer_add")
+    public View add(Param param){
+        boolean result = customerService.createCustomer(param.getMap());
+        return new View("customer_create.jsp").addModel("msg","添加"+(result?"成功":"失败")+"!!!");
+    }
+
+    /**
      * 显示客户基本信息
      */
     @Action("get:/customer_show")
