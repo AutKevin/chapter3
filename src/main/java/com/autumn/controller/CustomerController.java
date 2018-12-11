@@ -70,4 +70,16 @@ public class CustomerController {
         boolean result = customerService.deleteCustomer(id);
         return new Data(result);
     }
+
+    /**
+     * 删除客户信息
+     * @param param
+     * @return
+     */
+    @Action("get:/customer_delete")
+    public Data deleteByGET(Param param){
+        long id = param.getLong("id");
+        boolean result = customerService.deleteCustomer(id);
+        return new Data(result);
+    }
 }

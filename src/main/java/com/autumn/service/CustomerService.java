@@ -1,10 +1,11 @@
 package com.autumn.service;
 
 import com.autumn.model.Customer;
-import com.autumn.util.DBHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smart4j.framework.annotation.Service;
+import org.smart4j.framework.annotation.Transaction;
+import org.smart4j.framework.util.DBHelper;
 
 import java.util.List;
 import java.util.Map;
@@ -53,6 +54,7 @@ public class CustomerService {
      * @Author: qiuyu
      * @Date: 2018/8/13
      */
+    @Transaction
     public boolean createCustomer(Map<String,Object> fieldMap){
         Boolean b = DBHelper.insertEntity(Customer.class,fieldMap);
         return b;
@@ -65,6 +67,7 @@ public class CustomerService {
      * @Author: qiuyu
      * @Date: 2018/8/13
      */
+    @Transaction
     public boolean updateCustomer(long id,Map<String,Object> fieldMap){
         Boolean b = DBHelper.updateEntity(Customer.class,id,fieldMap);
         return b;
@@ -77,6 +80,7 @@ public class CustomerService {
      * @Author: qiuyu
      * @Date: 2018/8/13
      */
+    @Transaction
     public boolean deleteCustomer(long id){
         String sql = "delete  customer where id=?";
         Boolean b = DBHelper.deleteEntity(Customer.class,id);
