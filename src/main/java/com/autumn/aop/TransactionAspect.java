@@ -14,8 +14,10 @@ import java.lang.reflect.Method;
 
 /**
  * 拦截器方式实现切面
+ * 已经在框架中用Proxy接口实现了
+ * 这里不重复实现
  */
-@Aspect(Service.class)
+//@Aspect(Service.class)
 public class TransactionAspect extends AspectProxy {
     private static final Logger LOGGER = LoggerFactory.getLogger(TransactionAspect.class);
 
