@@ -16,7 +16,7 @@ import java.util.Date;
  */
 @Aspect(Controller.class)
 public class ControllerResultAspect extends AspectProxy {
-    private static final Logger LOGGER = LoggerFactory.getLogger(org.smart4j.framework.aop.ControllerAspect.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ControllerResultAspect.class);
     private long begin;    //方法开始时间
 
     /**
@@ -45,5 +45,9 @@ public class ControllerResultAspect extends AspectProxy {
     public void after(Class<?> cls, Method method, Object result) throws Throwable {
         LOGGER.debug(String.format("结果: %s", result.toString()));
         LOGGER.debug("ControllerResultAspect---------end---------");
+    }
+
+    public static void main(String[] args) {
+        LOGGER.debug("测试测试测试");
     }
 }
