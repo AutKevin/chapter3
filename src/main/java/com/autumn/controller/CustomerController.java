@@ -10,6 +10,7 @@ import org.smart4j.framework.bean.Param;
 import org.smart4j.framework.bean.View;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @program: CustomerController
@@ -39,6 +40,17 @@ public class CustomerController {
     public View add(Param param){
         boolean result = customerService.createCustomer(param.getMap());
         return new View("customer_create.jsp").addModel("msg","添加"+(result?"成功":"失败")+"!!!");
+    }
+
+    /**
+     * 处理 创建客户请求 - 带图片
+     */
+    @Action("post:/customer_create")
+    public Data createSubmit(Param param){
+        Map<String,Object> fieldMap = param.getFieldMap();
+        FileParam fileParam = param.getFile("photo");
+        boolean result = customerService.createCustomer(param.getMap());
+        return new Data(result);
     }
 
     /**

@@ -48,16 +48,24 @@ public class CustomerService {
         return customer;
     }
     /**
-     * @Description:  创建客户
-     * @Param: [fieldMap]
-     * @return: boolean
-     * @Author: qiuyu
-     * @Date: 2018/8/13
+     * 创建客户
      */
     @Transaction
     public boolean createCustomer(Map<String,Object> fieldMap){
         Boolean b = DBHelper.insertEntity(Customer.class,fieldMap);
         return b;
+    }
+
+    /**
+     * 创建客户
+     */
+    @Transaction
+    public boolean createCustomer(Map<String,Object> fieldMap,FileParam fileParam){
+        Boolean result = DBHelper.insertEntity(Customer.class,fieldMap);
+        if (result){
+            UploadHelper.uploadFile("/tmp/upload/",fileParam);
+        }
+        return result;
     }
 
     /**
