@@ -10,7 +10,7 @@
 
 <h1>创建客户界面</h1>
 ${msg}
-<form id="customer_form" enctype="multipart/form-data">
+<form id="customer_form" action="${BASE}/customer_create" method="post" enctype="multipart/form-data">
     <table>
         <tr>
             <td>客户名称：</td>
@@ -30,10 +30,10 @@ ${msg}
         </tr>
         <tr>
             <td>照片：</td>
-            <td><input type="file" name="photo" value="${customer.photo}"></td>
+            <td><input type="file" name="photo"></td>   <%--value="${customer.photo}"--%>
         </tr>
     </table>
-    <button type="submit">保存</button>
+    <input type="submit">保存</input>
 </form>
 
 <script src="${BASE}/asset/lib/jquery/jquery.min.js"></script>

@@ -4,10 +4,10 @@
 
 import com.autumn.model.Customer;
 import com.autumn.service.CustomerService;
-import com.autumn.util.DBHelper;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.smart4j.framework.util.DBHelper;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -6,6 +6,7 @@ import org.smart4j.framework.annotation.Action;
 import org.smart4j.framework.annotation.Controller;
 import org.smart4j.framework.annotation.Inject;
 import org.smart4j.framework.bean.Data;
+import org.smart4j.framework.bean.FileParam;
 import org.smart4j.framework.bean.Param;
 import org.smart4j.framework.bean.View;
 
@@ -34,11 +35,22 @@ public class CustomerController {
     }
 
     /**
+     * 进入新增页面
+     * @return
+     */
+    @Action("get:/customer_add_jsp")
+    public View customer_add_jsp(){
+        return new View("customer_create.jsp");
+    }
+
+    /**
      * 添加
      */
     @Action("post:/customer_add")
     public View add(Param param){
-        boolean result = customerService.createCustomer(param.getMap());
+        //boolean result = customerService.createCustomer(param.getMap());  未优化前无文件的Param获取方式
+        Map paramMap = param.getFieldMap();
+        boolean result = customerService.createCustomer(paramMap);
         return new View("customer_create.jsp").addModel("msg","添加"+(result?"成功":"失败")+"!!!");
     }
 
@@ -49,7 +61,7 @@ public class CustomerController {
     public Data createSubmit(Param param){
         Map<String,Object> fieldMap = param.getFieldMap();
         FileParam fileParam = param.getFile("photo");
-        boolean result = customerService.createCustomer(param.getMap());
+        boolean result = customerService.createCustomer(fieldMap,fileParam);
         return new Data(result);
     }
 

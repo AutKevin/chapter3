@@ -7,7 +7,7 @@
     <title>客户管理</title>
 </head>
 <body>
-
+<a href="${BASE}/customer_add_jsp">添加</a>
 <h1>客户界面</h1>
 <table>
     <tr>

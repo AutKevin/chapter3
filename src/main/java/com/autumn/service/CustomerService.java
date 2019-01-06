@@ -5,6 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smart4j.framework.annotation.Service;
 import org.smart4j.framework.annotation.Transaction;
+import org.smart4j.framework.bean.FileParam;
+import org.smart4j.framework.helper.UploadHelper;
 import org.smart4j.framework.util.DBHelper;
 
 import java.util.List;
@@ -57,7 +59,7 @@ public class CustomerService {
     }
 
     /**
-     * 创建客户
+     * 创建客户 - 带文件
      */
     @Transaction
     public boolean createCustomer(Map<String,Object> fieldMap,FileParam fileParam){
